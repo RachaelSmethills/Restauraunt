@@ -3,18 +3,24 @@ Class restauraunt {
     name String
     imageURL [[ link]]
     location String
-    addmenu()
+    menus Array <menu>
+    addmenu(<menu>)
+    deleteMenu(<menu>)
 }
 
 Class menu {
     title String
     icon String
-    additem()
+    items Array<item>
+    additem(<item>)
+    deleteItem(<item>)
 }
 
 Class Item {
     name String
-    price Integer
+    price Number
+    createItem(title, price)
+    deleteItem()
 }
 
 restauraunt --{menu
