@@ -1,0 +1,24 @@
+@startuml Restauraunt
+Class restauraunt {
+    name String
+    imageURL [[ link]]
+    location String
+    addmenu()
+}
+
+Class menu {
+    title String
+    icon String
+    additem()
+}
+
+Class Item {
+    name String
+    price Integer
+}
+
+restauraunt --{menu
+menu --{Item
+
+
+@enduml

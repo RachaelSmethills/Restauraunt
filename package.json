@@ -1,0 +1,19 @@
+{
+  "name": "restauraunt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RachaelSmethills/Restauraunt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RachaelSmethills/Restauraunt/issues"
+  },
+  "homepage": "https://github.com/RachaelSmethills/Restauraunt#readme"
+}
