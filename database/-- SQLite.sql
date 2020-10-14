@@ -6,4 +6,5 @@ select r.name as 'Restaurant',
     from restauraunts r
     inner join menus m on m.restaurauntsId = r.id
     inner join items i on i.menusId = m.id
-ORDER BY r.ID, m.Id, i.id
+ORDER BY r.ID, m.Id, i.id;
+
