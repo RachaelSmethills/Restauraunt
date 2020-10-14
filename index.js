@@ -7,5 +7,6 @@ dbLoader
 .createRestaurantDb()
 .then(() =>{
     console.log('Running insert... ehhhhhh');
-    dbLoader.load('restauraunts', restaturantData, () => console.log('WE GOT HERE'));
+    dbLoader.load('restauraunts', restaturantData)
+    .then(() => console.log('Mc done'));
 });
