@@ -1,11 +1,12 @@
 CREATE TABLE restauraunts(
     id INTEGER PRIMARY KEY, 
-    name Text
+    name Text,
+    image TEXT
 );
 
 CREATE TABLE menus(
     id INTEGER PRIMARY KEY, 
-    name Text,
+    title Text,
     restaurauntId INTEGER,
     FOREIGN KEY(restaurauntId) REFERENCES restauraunts(id)
 );
