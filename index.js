@@ -6,5 +6,5 @@ const dbLoader = new repository();
 dbLoader
 .createRestaurantDb()
 .then(() =>{
-    dbLoader.insert('restauraunts', restaturantData, () => console.log('DONE IT ALL'))
+    dbLoader.insertRestaurants(restaturantData, () => console.log('DONE IT ALL'))
 });

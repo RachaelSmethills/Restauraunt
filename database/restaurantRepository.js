@@ -29,6 +29,44 @@ class RestaurantRepository extends DatabaseLoader {
             `, resolve());
         });
     }
+
+    insertMenuItems(menuItems, menus, restaurants, callback) {
+        if (!menuItems.length) return this.insertMenus(menus, restaurants, callback);
+        let self = this;
+
+        const dataObject = menuItems.pop();
+        const qb = this.generateInsertQuery('items', dataObject);
+        this.db.run(qb.query, qb.params, function(error) { // Executes the query with provided paramaters
+            if (error) throw new Error(error);
+            self.insertMenuItems(menuItems, menus, restaurants, callback);
+        });
+    }
+
+    insertMenus(menus, restaurants, callback) {
+        if (!menus.length) return this.insertRestaurants(restaurants, callback);
+        let self = this;
+
+        const dataObject = menus.pop();
+        const qb = this.generateInsertQuery('menus', dataObject);
+        this.db.run(qb.query, qb.params, function(error) { // Executes the query with provided paramaters
+            if (error) throw new Error(error);
+            const obj = {}; obj[`menusid`] = this.lastID;
+            self.insertMenuItems(dataObject['items'].map(y => Object.assign(y, obj)),menus, restaurants, callback);
+        });
+    }
+
+    insertRestaurants(restaurants, callback) {
+        if (!restaurants.length) return callback();
+        let self = this;
+
+        const dataObject = restaurants.pop();
+        const qb = this.generateInsertQuery('restauraunts', dataObject);
+        this.db.run(qb.query, qb.params, function(error) { // Executes the query with provided paramaters
+            if (error) throw new Error(error);
+            const obj = {}; obj[`restaurauntsid`] = this.lastID;
+            self.insertMenus(dataObject['menus'].map(y => Object.assign(y, obj)), restaurants, callback);
+        });
+    }
 }
 
 module.exports = RestaurantRepository;
